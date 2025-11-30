@@ -1,0 +1,298 @@
+/* Modern Card Design */
+.card {
+    border: none;
+    border-radius: var(--radius-xl);
+    background: var(--bg-card);
+    box-shadow: var(--shadow-lg);
+    transition: all var(--transition-base);
+    overflow: hidden;
+    position: relative;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--primary-gradient);
+}
+
+.card:hover {
+    box-shadow: var(--shadow-xl);
+    transform: translateY(-2px);
+}
+
+.card-body {
+    padding: 2.5rem;
+}
+
+.card-title {
+    font-weight: 700;
+    font-size: 1.75rem;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Modern Form Controls */
+.form-label {
+    font-weight: 600;
+    color: var(--text-medium);
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+}
+
+.form-select,
+.form-control,
+textarea.form-control {
+    border: 2px solid rgba(102, 126, 234, 0.1);
+    border-radius: var(--radius-md);
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    transition: all var(--transition-base);
+    background: var(--bg-card);
+    color: var(--text-dark);
+}
+
+.form-select:focus,
+.form-control:focus,
+textarea.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    outline: none;
+}
+
+.form-select:hover,
+.form-control:hover,
+textarea.form-control:hover {
+    border-color: var(--primary-light);
+}
+
+/* Modern Buttons */
+.btn {
+    border-radius: var(--radius-md);
+    padding: 0.875rem 1.75rem;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all var(--transition-base);
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn-primary {
+    background: var(--primary-gradient);
+    color: white;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-primary:hover {
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+    transform: translateY(-2px);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-primary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-success {
+    background: var(--success-gradient);
+    color: white;
+    box-shadow: 0 4px 15px rgba(79, 172, 254, 0.4);
+}
+
+.btn-success:hover {
+    box-shadow: 0 6px 20px rgba(79, 172, 254, 0.5);
+    transform: translateY(-2px);
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+}
+
+.btn-danger:hover {
+    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.5);
+    transform: translateY(-2px);
+}
+
+.btn-outline-secondary,
+.btn-outline-primary {
+    background: transparent;
+    border: 2px solid rgba(102, 126, 234, 0.3);
+    color: var(--primary-color);
+}
+
+.btn-outline-secondary:hover,
+.btn-outline-primary:hover {
+    background: rgba(102, 126, 234, 0.1);
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+}
+
+/* Modern Badges */
+.badge {
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    font-size: 0.875rem;
+    letter-spacing: 0.3px;
+}
+
+.badge.bg-secondary {
+    background: linear-gradient(135deg, #8b9ff5 0%, #a0aec0 100%);
+}
+
+.badge.bg-info {
+    background: var(--success-gradient);
+    color: white;
+}
+
+/* Alert Styling */
+.alert {
+    border: none;
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+    font-weight: 500;
+    box-shadow: var(--shadow-md);
+}
+
+.alert-success {
+    background: linear-gradient(135deg, rgba(79, 172, 254, 0.1) 0%, rgba(0, 242, 254, 0.1) 100%);
+    border-left: 4px solid var(--info-color);
+    color: var(--text-dark);
+}
+
+.alert-danger {
+    background: linear-gradient(135deg, rgba(255, 107, 107, 0.1) 0%, rgba(238, 90, 111, 0.1) 100%);
+    border-left: 4px solid var(--danger-color);
+    color: var(--text-dark);
+}
+
+.alert-info {
+    background: linear-gradient(135deg, rgba(79, 172, 254, 0.1) 0%, rgba(0, 212, 170, 0.1) 100%);
+    border-left: 4px solid var(--info-color);
+    color: var(--text-dark);
+}
+
+/* List Group */
+.list-group-item {
+    border: 2px solid rgba(102, 126, 234, 0.1);
+    border-radius: var(--radius-md) !important;
+    margin-bottom: 0.75rem;
+    padding: 1rem 1.25rem;
+    transition: all var(--transition-base);
+    background: var(--bg-card);
+}
+
+.list-group-item:hover {
+    border-color: var(--primary-light);
+    box-shadow: var(--shadow-md);
+    transform: translateX(4px);
+}
+
+/* File Upload Styling */
+input[type="file"].form-control {
+    padding: 0.875rem 1rem;
+    cursor: pointer;
+}
+
+input[type="file"].form-control::file-selector-button {
+    background: var(--primary-gradient);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    cursor: pointer;
+    margin-right: 1rem;
+    transition: all var(--transition-base);
+}
+
+input[type="file"].form-control::file-selector-button:hover {
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    transform: translateY(-1px);
+}
+
+/* Text Utilities */
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
+.text-truncate {
+    color: var(--text-medium);
+    font-size: 0.9rem;
+}
+
+.small {
+    font-size: 0.9rem;
+}
+
+.form-text {
+    font-size: 0.875rem;
+    color: var(--text-light);
+    margin-top: 0.5rem;
+}
+
+/* Horizontal Rule */
+hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(102, 126, 234, 0.2) 50%,
+            transparent 100%);
+    margin: 2rem 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .card-body {
+        padding: 1.5rem;
+    }
+
+    .card-title {
+        font-size: 1.5rem;
+    }
+
+    .btn {
+        padding: 0.75rem 1.5rem;
+    }
+}

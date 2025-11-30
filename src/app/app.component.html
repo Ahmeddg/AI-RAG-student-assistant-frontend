@@ -1,0 +1,26 @@
+<div class="app-container">
+  <header class="app-header">
+    <div class="header-content">
+      <h1>{{ title }}</h1>
+      <nav class="navbar">
+        <button (click)="navigate('home')" [ngClass]="{ 'active': currentRoute === 'home' }" class="nav-link">
+          📤 Upload
+        </button>
+        <button (click)="navigate('query')" [ngClass]="{ 'active': currentRoute === 'query' }" class="nav-link">
+          ❓ Query
+        </button>
+        <button (click)="navigate('quiz')" [ngClass]="{ 'active': currentRoute === 'quiz' }" class="nav-link">
+          🎯 Quiz
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="app-main">
+    <router-outlet></router-outlet>
+  </main>
+
+  <footer class="app-footer">
+    <p>&copy; 2025 Smart Study Assistant. Powered by AI.</p>
+  </footer>
+</div>

@@ -1,0 +1,42 @@
+<div class="card mx-auto animate-fade-in-up" style="max-width:800px">
+  <div class="card-body">
+    <h5 class="card-title">❓ Ask a Question</h5>
+    <p class="text-muted mb-4">Ask anything about your uploaded documents and get AI-powered answers</p>
+
+    <div class="mb-4">
+      <label class="form-label">Your Question</label>
+      <textarea class="form-control" rows="4" [(ngModel)]="question" [disabled]="isLoading"
+        placeholder="Enter your question about the uploaded documents... For example: 'What are the main concepts in this document?'"></textarea>
+    </div>
+
+    <div class="d-flex gap-2">
+      <button class="btn btn-primary flex-grow-1" (click)="onQuery()" [disabled]="!question.trim() || isLoading">
+        <span *ngIf="!isLoading">🔍 Search Answer</span>
+        <span *ngIf="isLoading">
+          <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+          Searching...
+        </span>
+      </button>
+      <button class="btn btn-outline-secondary" (click)="onClear()" [disabled]="isLoading">Clear</button>
+    </div>
+
+    <div *ngIf="queryError" class="mt-4 animate-fade-in">
+      <div class="alert alert-danger">
+        <strong>⚠️ Error:</strong> {{ queryError }}
+      </div>
+    </div>
+
+    <div *ngIf="hasResult" class="mt-4 animate-fade-in">
+      <div class="card"
+        style="background: linear-gradient(135deg, rgba(79, 172, 254, 0.05) 0%, rgba(0, 242, 254, 0.05) 100%); border: 2px solid rgba(79, 172, 254, 0.2);">
+        <div class="card-body">
+          <h6 class="card-subtitle mb-3"
+            style="color: var(--info-color); font-weight: 700; display: flex; align-items: center; gap: 0.5rem;">
+            <span style="font-size: 1.25rem;">💡</span> Answer
+          </h6>
+          <p>{{ answer }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
