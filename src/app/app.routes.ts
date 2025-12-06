@@ -8,5 +8,6 @@ export const routes: Routes = [
   { path: 'home', component: UploadComponent },
   { path: 'query', component: QueryComponent },
   { path: 'quiz', component: QuizComponent },
+  { path: 'roadmap', loadComponent: () => import('./components/roadmap/roadmap.component').then(m => m.RoadmapComponent) },
   { path: '**', redirectTo: '/home' }
 ];

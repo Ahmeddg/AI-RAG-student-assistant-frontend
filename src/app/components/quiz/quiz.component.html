@@ -77,65 +77,82 @@
         </div>
       </div>
 
-<!-- Multiple Choice Options -->
-<div class="options-container mb-4">
-  <!-- Option A -->
-  <div class="option-card mb-3"
-       [class.selected]="selectedOption === 'A'"
-       [class.correct]="quizQuestions[currentQuestionIndex].userAnswer && quizQuestions[currentQuestionIndex].correct_answer === 'A'"
-       [class.incorrect]="quizQuestions[currentQuestionIndex].userAnswer && quizQuestions[currentQuestionIndex].userAnswer === 'A' && !quizQuestions[currentQuestionIndex].isCorrect"
-       (click)="!quizQuestions[currentQuestionIndex].userAnswer && selectOption('A')">
-    <div class="option-letter">A</div>
-    <div class="option-text">{{ quizQuestions[currentQuestionIndex].options['A'] }}</div>
-    <div class="option-indicator" *ngIf="quizQuestions[currentQuestionIndex].userAnswer">
-      <span *ngIf="quizQuestions[currentQuestionIndex].correct_answer === 'A'">✓</span>
-      <span *ngIf="quizQuestions[currentQuestionIndex].userAnswer === 'A' && !quizQuestions[currentQuestionIndex].isCorrect">✗</span>
-    </div>
-  </div>
+      <!-- Multiple Choice Options -->
+      <div class="options-container mb-4">
+        <!-- Option A -->
+        <div class="option-card mb-3" [class.selected]="selectedOption === 'A'"
+          [class.correct]="quizQuestions[currentQuestionIndex].userAnswer && quizQuestions[currentQuestionIndex].correct_answer === 'A'"
+          [class.incorrect]="quizQuestions[currentQuestionIndex].userAnswer && quizQuestions[currentQuestionIndex].userAnswer === 'A' && !quizQuestions[currentQuestionIndex].isCorrect"
+          (click)="!quizQuestions[currentQuestionIndex].userAnswer && selectOption('A')">
+          <div class="option-letter">A</div>
+          <div class="option-text">{{ quizQuestions[currentQuestionIndex].options['A'] }}</div>
+          <div class="option-indicator" *ngIf="quizQuestions[currentQuestionIndex].userAnswer">
+            <span *ngIf="quizQuestions[currentQuestionIndex].correct_answer === 'A'">✓</span>
+            <span
+              *ngIf="quizQuestions[currentQuestionIndex].userAnswer === 'A' && !quizQuestions[currentQuestionIndex].isCorrect">✗</span>
+          </div>
+        </div>
 
-  <!-- Option B -->
-  <div class="option-card mb-3"
-       [class.selected]="selectedOption === 'B'"
-       [class.correct]="quizQuestions[currentQuestionIndex].userAnswer && quizQuestions[currentQuestionIndex].correct_answer === 'B'"
-       [class.incorrect]="quizQuestions[currentQuestionIndex].userAnswer && quizQuestions[currentQuestionIndex].userAnswer === 'B' && !quizQuestions[currentQuestionIndex].isCorrect"
-       (click)="!quizQuestions[currentQuestionIndex].userAnswer && selectOption('B')">
-    <div class="option-letter">B</div>
-    <div class="option-text">{{ quizQuestions[currentQuestionIndex].options['B'] }}</div>
-    <div class="option-indicator" *ngIf="quizQuestions[currentQuestionIndex].userAnswer">
-      <span *ngIf="quizQuestions[currentQuestionIndex].correct_answer === 'B'">✓</span>
-      <span *ngIf="quizQuestions[currentQuestionIndex].userAnswer === 'B' && !quizQuestions[currentQuestionIndex].isCorrect">✗</span>
-    </div>
-  </div>
+        <!-- Option B -->
+        <div class="option-card mb-3" [class.selected]="selectedOption === 'B'"
+          [class.correct]="quizQuestions[currentQuestionIndex].userAnswer && quizQuestions[currentQuestionIndex].correct_answer === 'B'"
+          [class.incorrect]="quizQuestions[currentQuestionIndex].userAnswer && quizQuestions[currentQuestionIndex].userAnswer === 'B' && !quizQuestions[currentQuestionIndex].isCorrect"
+          (click)="!quizQuestions[currentQuestionIndex].userAnswer && selectOption('B')">
+          <div class="option-letter">B</div>
+          <div class="option-text">{{ quizQuestions[currentQuestionIndex].options['B'] }}</div>
+          <div class="option-indicator" *ngIf="quizQuestions[currentQuestionIndex].userAnswer">
+            <span *ngIf="quizQuestions[currentQuestionIndex].correct_answer === 'B'">✓</span>
+            <span
+              *ngIf="quizQuestions[currentQuestionIndex].userAnswer === 'B' && !quizQuestions[currentQuestionIndex].isCorrect">✗</span>
+          </div>
+        </div>
 
-  <!-- Option C -->
-  <div class="option-card mb-3"
-       [class.selected]="selectedOption === 'C'"
-       [class.correct]="quizQuestions[currentQuestionIndex].userAnswer && quizQuestions[currentQuestionIndex].correct_answer === 'C'"
-       [class.incorrect]="quizQuestions[currentQuestionIndex].userAnswer && quizQuestions[currentQuestionIndex].userAnswer === 'C' && !quizQuestions[currentQuestionIndex].isCorrect"
-       (click)="!quizQuestions[currentQuestionIndex].userAnswer && selectOption('C')">
-    <div class="option-letter">C</div>
-    <div class="option-text">{{ quizQuestions[currentQuestionIndex].options['C'] }}</div>
-    <div class="option-indicator" *ngIf="quizQuestions[currentQuestionIndex].userAnswer">
-      <span *ngIf="quizQuestions[currentQuestionIndex].correct_answer === 'C'">✓</span>
-      <span *ngIf="quizQuestions[currentQuestionIndex].userAnswer === 'C' && !quizQuestions[currentQuestionIndex].isCorrect">✗</span>
-    </div>
-  </div>
+        <!-- Option C -->
+        <div class="option-card mb-3" [class.selected]="selectedOption === 'C'"
+          [class.correct]="quizQuestions[currentQuestionIndex].userAnswer && quizQuestions[currentQuestionIndex].correct_answer === 'C'"
+          [class.incorrect]="quizQuestions[currentQuestionIndex].userAnswer && quizQuestions[currentQuestionIndex].userAnswer === 'C' && !quizQuestions[currentQuestionIndex].isCorrect"
+          (click)="!quizQuestions[currentQuestionIndex].userAnswer && selectOption('C')">
+          <div class="option-letter">C</div>
+          <div class="option-text">{{ quizQuestions[currentQuestionIndex].options['C'] }}</div>
+          <div class="option-indicator" *ngIf="quizQuestions[currentQuestionIndex].userAnswer">
+            <span *ngIf="quizQuestions[currentQuestionIndex].correct_answer === 'C'">✓</span>
+            <span
+              *ngIf="quizQuestions[currentQuestionIndex].userAnswer === 'C' && !quizQuestions[currentQuestionIndex].isCorrect">✗</span>
+          </div>
+        </div>
 
-  <!-- Option D -->
-  <div class="option-card mb-3"
-       [class.selected]="selectedOption === 'D'"
-       [class.correct]="quizQuestions[currentQuestionIndex].userAnswer && quizQuestions[currentQuestionIndex].correct_answer === 'D'"
-       [class.incorrect]="quizQuestions[currentQuestionIndex].userAnswer && quizQuestions[currentQuestionIndex].userAnswer === 'D' && !quizQuestions[currentQuestionIndex].isCorrect"
-       (click)="!quizQuestions[currentQuestionIndex].userAnswer && selectOption('D')">
-    <div class="option-letter">D</div>
-    <div class="option-text">{{ quizQuestions[currentQuestionIndex].options['D'] }}</div>
-    <div class="option-indicator" *ngIf="quizQuestions[currentQuestionIndex].userAnswer">
-      <span *ngIf="quizQuestions[currentQuestionIndex].correct_answer === 'D'">✓</span>
-      <span *ngIf="quizQuestions[currentQuestionIndex].userAnswer === 'D' && !quizQuestions[currentQuestionIndex].isCorrect">✗</span>
-    </div>
-  </div>
-</div>
+        <!-- Option D -->
+        <div class="option-card mb-3" [class.selected]="selectedOption === 'D'"
+          [class.correct]="quizQuestions[currentQuestionIndex].userAnswer && quizQuestions[currentQuestionIndex].correct_answer === 'D'"
+          [class.incorrect]="quizQuestions[currentQuestionIndex].userAnswer && quizQuestions[currentQuestionIndex].userAnswer === 'D' && !quizQuestions[currentQuestionIndex].isCorrect"
+          (click)="!quizQuestions[currentQuestionIndex].userAnswer && selectOption('D')">
+          <div class="option-letter">D</div>
+          <div class="option-text">{{ quizQuestions[currentQuestionIndex].options['D'] }}</div>
+          <div class="option-indicator" *ngIf="quizQuestions[currentQuestionIndex].userAnswer">
+            <span *ngIf="quizQuestions[currentQuestionIndex].correct_answer === 'D'">✓</span>
+            <span
+              *ngIf="quizQuestions[currentQuestionIndex].userAnswer === 'D' && !quizQuestions[currentQuestionIndex].isCorrect">✗</span>
+          </div>
+        </div>
+      </div>
 
+      <!-- Explanation Card (shown after answer) -->
+      <div *ngIf="quizQuestions[currentQuestionIndex].userAnswer && quizQuestions[currentQuestionIndex].explanation"
+        class="card mb-4 animate-fade-in"
+        [style.background]="quizQuestions[currentQuestionIndex].isCorrect ? 'linear-gradient(135deg, rgba(76, 175, 80, 0.08) 0%, rgba(76, 175, 80, 0.03) 100%)' : 'linear-gradient(135deg, rgba(244, 67, 54, 0.08) 0%, rgba(244, 67, 54, 0.03) 100%)'"
+        [style.border]="quizQuestions[currentQuestionIndex].isCorrect ? '2px solid rgba(76, 175, 80, 0.3)' : '2px solid rgba(244, 67, 54, 0.3)'">
+        <div class="card-body" style="padding: 1.5rem;">
+          <div class="d-flex align-items-center gap-2 mb-3">
+            <span style="font-size: 1.5rem;">{{ quizQuestions[currentQuestionIndex].isCorrect ? '✅' : '📚' }}</span>
+            <h6 style="margin: 0; font-weight: 700; color: var(--text-dark);">
+              {{ quizQuestions[currentQuestionIndex].isCorrect ? 'Correct!' : 'Learn & Review' }}
+            </h6>
+          </div>
+          <p style="line-height: 1.7; color: var(--text-medium); margin: 0;">
+            {{ quizQuestions[currentQuestionIndex].explanation }}
+          </p>
+        </div>
+      </div>
 
       <!-- Submit Button -->
       <button class="btn btn-primary w-100" *ngIf="!quizQuestions[currentQuestionIndex].userAnswer"

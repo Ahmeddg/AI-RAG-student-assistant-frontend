@@ -3,6 +3,13 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RagService, QueryResponse } from '../../services/rag.service';
 
+interface Source {
+  chunk_id: number;
+  score: number;
+  text_preview: string;
+  source_file: string;
+}
+
 @Component({
   selector: 'app-query',
   standalone: true,
@@ -14,10 +21,12 @@ export class QueryComponent {
   question: string = '';
   isLoading = false;
   answer: string = '';
+  sources: Source[] = [];
+  contextUsed: number = 0;
   queryError: string = '';
   hasResult = false;
 
-  constructor(private ragService: RagService) {}
+  constructor(private ragService: RagService) { }
 
   onQuery(): void {
     if (!this.question.trim()) {
@@ -28,12 +37,15 @@ export class QueryComponent {
     this.isLoading = true;
     this.queryError = '';
     this.answer = '';
+    this.sources = [];
     this.hasResult = false;
 
     this.ragService.queryDocument(this.question).subscribe({
-      next: (response: QueryResponse) => {
+      next: (response: any) => {
         this.isLoading = false;
-        this.answer = response.answer;
+        this.answer = response.answer || response;
+        this.sources = response.sources || [];
+        this.contextUsed = response.context_used || 0;
         this.hasResult = true;
       },
       error: (error) => {
@@ -46,6 +58,7 @@ export class QueryComponent {
   onClear(): void {
     this.question = '';
     this.answer = '';
+    this.sources = [];
     this.queryError = '';
     this.hasResult = false;
   }

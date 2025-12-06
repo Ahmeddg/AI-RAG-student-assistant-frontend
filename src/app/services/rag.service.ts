@@ -49,4 +49,13 @@ export class RagService {
       difficulty 
     });
   }
+
+  generateRoadmap(topic: string, learningStyle: string, difficulty: string, useSearch: boolean): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/generate_roadmap/`, {
+      topic,
+      learning_style: learningStyle,
+      difficulty,
+      use_search: useSearch
+    });
+  }
 }

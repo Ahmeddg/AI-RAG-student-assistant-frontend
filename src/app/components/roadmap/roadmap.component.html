@@ -1,0 +1,104 @@
+<div class="roadmap-container">
+    <div class="input-section">
+        <h2>🗺️ Generate Learning Roadmap</h2>
+        <p class="subtitle">Create a personalized learning path powered by AI</p>
+
+        <div class="form-group">
+            <label for="topic">What do you want to learn?</label>
+            <input type="text" id="topic" [(ngModel)]="topic"
+                placeholder="e.g., Python for Data Science, React JS, Machine Learning"
+                (keyup.enter)="generateRoadmap()">
+        </div>
+
+        <div class="options-grid">
+            <div class="form-group">
+                <label for="style">Learning Style</label>
+                <select id="style" [(ngModel)]="learningStyle">
+                    <option *ngFor="let style of learningStyles" [value]="style">{{ style }}</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="difficulty">Difficulty Level</label>
+                <select id="difficulty" [(ngModel)]="difficulty">
+                    <option *ngFor="let diff of difficulties" [value]="diff">{{ diff | titlecase }}</option>
+                </select>
+            </div>
+
+            <div class="form-group checkbox-group">
+                <label>
+                    <input type="checkbox" [(ngModel)]="useSearch">
+                    Use Web Search (Firecrawl)
+                </label>
+            </div>
+        </div>
+
+        <button class="generate-btn" (click)="generateRoadmap()" [disabled]="isLoading || !topic.trim()">
+            <span *ngIf="!isLoading">🚀 Generate Roadmap</span>
+            <span *ngIf="isLoading">
+                <span class="spinner"></span> Generating your roadmap...
+            </span>
+        </button>
+    </div>
+
+    <div *ngIf="error" class="error-message">
+        ❌ {{ error }}
+    </div>
+
+    <div *ngIf="roadmap" class="roadmap-display">
+        <div class="roadmap-header">
+            <h3>{{ roadmap.title }}</h3>
+            <p>{{ roadmap.description }}</p>
+            <div class="roadmap-stats">
+                <span class="stat">📚 {{ roadmap.modules.length }} Modules</span>
+                <span class="stat">🎯 {{ learningStyle }} Learner</span>
+                <span class="stat">📊 {{ difficulty | titlecase }}</span>
+            </div>
+        </div>
+
+        <div class="modules-list">
+            <div *ngFor="let module of roadmap.modules; let i = index" class="module-card">
+                <div class="module-header">
+                    <span class="module-number">Module {{ i + 1 }}</span>
+                    <h4>{{ module.title }}</h4>
+                </div>
+
+                <p class="module-desc">{{ module.description }}</p>
+
+                <div class="topics-section">
+                    <h5>📌 Key Topics:</h5>
+                    <div class="topics-tags">
+                        <span *ngFor="let t of module.topics" class="topic-tag">{{ t }}</span>
+                    </div>
+                </div>
+
+                <div class="resources-section" *ngIf="module.resources && module.resources.length > 0">
+                    <h5>📖 Recommended Resources ({{ module.resources.length }}):</h5>
+                    <div class="resources-list">
+                        <a *ngFor="let res of module.resources" [href]="res.url" target="_blank" class="resource-item">
+                            <div class="resource-icon">{{ getResourceIcon(res.type) }}</div>
+                            <div class="resource-info">
+                                <div class="resource-title">{{ res.title }}</div>
+                                <div class="resource-desc" *ngIf="res.description">{{ res.description }}</div>
+                                <div class="resource-meta">
+                                    <span class="res-type">{{ res.type | titlecase }}</span>
+                                    <span class="res-diff badge" [class]="res.difficulty">{{ res.difficulty }}</span>
+                                    <span *ngIf="res.relevance_score" class="res-score">
+                                        Score: {{ (res.relevance_score * 100) | number:'1.0-0' }}%
+                                    </span>
+                                </div>
+                                <div *ngIf="res.match_reason" class="res-reason">
+                                    ✨ {{ res.match_reason }}
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="no-resources" *ngIf="!module.resources || module.resources.length === 0">
+                    <p>💡 No resources generated for this module yet. The AI will find resources as you explore!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

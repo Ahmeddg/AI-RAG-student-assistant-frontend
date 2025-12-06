@@ -15,6 +15,7 @@ export interface QuizQuestion {
   question: string;
   options: Options; // Fixed: Added semicolon and capitalized type name
   correct_answer: string;
+  explanation?: string;  // Added for learning/review
   userAnswer?: string;
   isCorrect?: boolean;
 }
